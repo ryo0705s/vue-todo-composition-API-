@@ -1,21 +1,35 @@
 <template>
   <div id="app">
-    {{ message }}
-    <!-- {{ state.message }} -->
+    <h1>TODOアプリ</h1>
+    <input v-model="state.todo" />
+    <button @click="add">作成</button>
+    <ul>
+      <li v-for="(todo, index) in state.todos" :key="index">
+        {{ todo }}<button @click="remove(index)">X</button>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
+import { reactive } from "vue";
 export default {
   setup() {
-    const message = ref("Hello World");
-    // const state = reactive({
-    //   message: "Hello Wold",
-    // });
+    const state = reactive({
+      todo: "",
+      todos: [],
+    });
+    const add = () => {
+      state.todos.push(state.todo);
+      state.todo = "";
+    };
+    const remove = (index) => {
+      state.todos.splice(index, 1);
+    };
     return {
-      message,
-      // state,
+      state,
+      add,
+      remove,
     };
   },
 };
