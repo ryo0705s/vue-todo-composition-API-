@@ -9,7 +9,7 @@
       </li>
     </ul>
     <!-- <div>{{ length }}</div> -->
-    <div>{{ state.getListLength }}</div>
+    <div>{{ getListLength }}</div>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     const state = reactive({
       todo: "",
       todos: [],
-      getListLength: computed(() => state.todos.length),
+      // getListLength: computed(() => state.todos.length),
     });
     const add = () => {
       state.todos.push(state.todo);
@@ -29,6 +29,7 @@ export default {
     const remove = (index) => {
       state.todos.splice(index, 1);
     };
+    const getListLength = computed(() => state.todos.length);
     // const length = (todos) => {
     //   state.todos.length;
     // };
@@ -36,6 +37,7 @@ export default {
       state,
       add,
       remove,
+      getListLength,
       // length,
     };
   },
