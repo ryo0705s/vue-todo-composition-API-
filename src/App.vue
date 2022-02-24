@@ -10,12 +10,15 @@
     </ul>
     <!-- <div>{{ length }}</div> -->
     <div>{{ getListLength }}</div>
+    <Hello />
   </div>
 </template>
 
 <script>
 import { reactive, computed } from "vue";
+import Hello from "@/components/HelloWorld";
 export default {
+  components: { Hello },
   setup() {
     const state = reactive({
       todo: "",
