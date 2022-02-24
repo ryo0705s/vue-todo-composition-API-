@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    {{ state.message }}
+    {{ message }}
+    <!-- {{ state.message }} -->
   </div>
 </template>
 
 <script>
-import { reactive } from "vue";
+import { ref } from "vue";
 export default {
   setup() {
-    const state = reactive({
-      message: "Hello Wold",
-    });
+    const message = ref("Hello World");
+    // const state = reactive({
+    //   message: "Hello Wold",
+    // });
     return {
-      state,
+      message,
+      // state,
     };
   },
 };
