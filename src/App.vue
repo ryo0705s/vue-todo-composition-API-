@@ -8,16 +8,19 @@
         {{ todo }}<button @click="remove(index)">X</button>
       </li>
     </ul>
+    <!-- <div>{{ length }}</div> -->
+    <div>{{ state.getListLength }}</div>
   </div>
 </template>
 
 <script>
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 export default {
   setup() {
     const state = reactive({
       todo: "",
       todos: [],
+      getListLength: computed(() => state.todos.length),
     });
     const add = () => {
       state.todos.push(state.todo);
@@ -26,10 +29,14 @@ export default {
     const remove = (index) => {
       state.todos.splice(index, 1);
     };
+    // const length = (todos) => {
+    //   state.todos.length;
+    // };
     return {
       state,
       add,
       remove,
+      // length,
     };
   },
 };
