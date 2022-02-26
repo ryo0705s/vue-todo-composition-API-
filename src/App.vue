@@ -5,7 +5,11 @@
     <button @click="add">作成</button>
     <ul>
       <li v-for="(todo, index) in state.todos" :key="index">
-        {{ todo }}<button @click="remove(index)">X</button>
+        {{ todo }}
+        <button @click="remove(index)">X</button>
+        <button @click="edit(index)">編集</button>
+        <br /><input v-model="state.newTodo" />
+        <button @click="edited">更新</button>
       </li>
     </ul>
     <!-- <div>{{ length }}</div> -->
@@ -36,12 +40,22 @@ export default {
     // const length = (todos) => {
     //   state.todos.length;
     // };
+    const edit = (index) => {
+      state.newTodo = state.todos[index];
+      // index = "";
+    };
+    const edited = (index) => {
+      state.todos.splice(index, 1, state.newTodo);
+      state.newTodo = "";
+      // console.log(index, "dd");
+    };
     return {
       state,
       add,
       remove,
       getListLength,
-      // length,
+      edit,
+      edited,
     };
   },
 };
