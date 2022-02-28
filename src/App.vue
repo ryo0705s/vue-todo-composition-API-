@@ -9,7 +9,7 @@
         <button @click="remove(index)">X</button>
         <button @click="edit(index)">編集</button>
         <br /><input v-model="state.newTodo" />
-        <button @click="edited">更新</button>
+        <button @click="edited(index)">更新</button>
       </li>
     </ul>
     <!-- <div>{{ length }}</div> -->
